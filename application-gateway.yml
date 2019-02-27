@@ -22,10 +22,10 @@ eureka:
  
 zuul: 
   #ignored-services: microservicecloud-dept
-  ignored-services: "*"#将所有通过真实微服务的请求全部禁用     真实访问 http://网关应用url/真实注册服务Application名称/..
+  ignored-services: "*" #将所有通过真实微服务的请求全部禁用     真实访问 http://网关应用url/真实注册服务Application名称/..
   routes: 
     mydept.serviceId: ITEM-DEV
-    mydept.path: /mall/**#网关访问的真实路径 http://网关地址/mydept/..
+    mydept.path: /mall/** #网关访问的真实路径 http://网关地址/mydept/..
     
 info: 
   app.name: gateway
@@ -52,10 +52,10 @@ eureka:
  
 zuul: 
   #ignored-services: microservicecloud-dept
-  ignored-services: "*"#将所有通过真实微服务的请求全部禁用     真实访问 http://网关应用url/真实注册服务Application名称/..
+  ignored-services: "*" #将所有通过真实微服务的请求全部禁用     真实访问 http://网关应用url/真实注册服务Application名称/..
   routes: 
     mydept.serviceId: ITEM-DEV
-    mydept.path: /mall/**#网关访问的真实路径 http://网关地址/mydept/..
+    mydept.path: /mall/** #网关访问的真实路径 http://网关地址/mydept/..
     
 info: 
   app.name: gateway
@@ -82,10 +82,10 @@ eureka:
  
 zuul: 
   #ignored-services: microservicecloud-dept
-  ignored-services: "*"#将所有通过真实微服务的请求全部禁用     真实访问 http://网关应用url/真实注册服务Application名称/..
+  ignored-services: "*" #将所有通过真实微服务的请求全部禁用     真实访问 http://网关应用url/真实注册服务Application名称/..
   routes: 
     mydept.serviceId: ITEM-DEV
-    mydept.path: /mydept/**#网关访问的真实路径 http://网关地址/mydept/..
+    mydept.path: /mydept/** #网关访问的真实路径 http://网关地址/mydept/..
     
 info: 
   app.name: gateway8089
