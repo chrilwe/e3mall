@@ -10,7 +10,7 @@ server:
 spring:
    profiles: dev
    application: 
-     name: item
+     name: item-dev
    datasource: 
      url: jdbc:mysql://192.168.43.51:3306/taotao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8             # 数据库名称
      username: root
@@ -29,7 +29,7 @@ server:
 spring:
    profiles: prod
    application:  
-     name: item
+     name: item-prod
    datasource: 
      url: jdbc:mysql://192.168.43.51:3306/taotao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8             # 数据库名称
      username: root
@@ -47,14 +47,14 @@ server:
 
 spring:
   profiles: test
-   application:  
-     name: item
-   datasource: 
-     url: jdbc:mysql://localhost:3306/taotao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8             # 数据库名称
-     username: root
-     password: root
-     dbcp2:
-       min-idle: 5                                           # 数据库连接池的最小维持连接数
-       initial-size: 5                                       # 初始化连接数
-       max-total: 5                                          # 最大连接数
-       max-wait-millis: 200  
+  application:  
+     name: item-test
+  datasource: 
+    url: jdbc:mysql://192.168.43.51:3306/taotao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8             # 数据库名称
+    username: root
+    password: root
+    dbcp2:
+      min-idle: 5                                           # 数据库连接池的最小维持连接数
+      initial-size: 5                                       # 初始化连接数
+      max-total: 5                                          # 最大连接数
+      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
