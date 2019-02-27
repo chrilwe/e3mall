@@ -6,10 +6,11 @@ spring:
 
 server:
   port: 9009
+
 spring:
-  profiles: dev
-  application:
-    name: gateway
+   profiles: dev
+   application: 
+     name: gateway-dev
 
 eureka:
   client: #客户端注册进eureka服务列表内
@@ -37,10 +38,11 @@ info:
 
 server:
   port: 9010
+
 spring:
-  profiles: prod
-  application:
-    name: gateway-prod
+   profiles: dev
+   application: 
+     name: gateway-dev
 
 eureka:
   client: #客户端注册进eureka服务列表内
@@ -68,10 +70,11 @@ info:
 
 server:
   port: 9011
+
 spring:
-  profiles: test
-  application:
-    name: gateway-test
+   profiles: dev
+   application: 
+     name: gateway-dev
   
 eureka:
   client: #客户端注册进eureka服务列表内
