@@ -1,0 +1,46 @@
+spring:
+  profiles: 
+    active: dev
+
+---
+
+server:
+  port: 9006
+spring:
+  profiles: dev
+  application:
+    name: manager-dev
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url: 
+      defaultZone: http://localhost:9000/eureka/                                
+---
+
+server:
+  port: 9007
+spring:
+  profiles: prod
+  application:
+    name: manager-prod
+
+eureka:
+  client:
+    register-with-eureka: false
+    service-url: 
+      defaultZone: http://localhost:9000/eureka/
+---
+
+server:
+  port: 9008
+spring:
+  profiles: test
+  application:
+    name: manager-test
+  
+eureka: 
+  client:
+    register-with-eureka: false
+    service-url: 
+      defaultZone: http://localhost:9000/eureka/
