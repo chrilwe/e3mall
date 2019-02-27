@@ -5,7 +5,7 @@ spring:
 ---
 
 server:
-  port: 9000
+  port: 9003
 
 spring:
    profiles: dev
@@ -24,7 +24,7 @@ spring:
 eureka:
   client: #客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://localhost:9000/eureka/
        #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
   instance:
     instance-id: item-service
@@ -39,7 +39,7 @@ info:
 ---
 
 server:
-  port: 9001
+  port: 9004
 
 spring:
    profiles: prod
@@ -58,7 +58,7 @@ spring:
 eureka:
   client: #客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://localhost:9000/eureka/
        #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
   instance:
     instance-id: item-service
@@ -73,7 +73,7 @@ info:
 ---
 
 server:
-  port: 9002
+  port: 9005
 
 spring:
   profiles: test
@@ -92,7 +92,7 @@ spring:
 eureka:
   client: #客户端注册进eureka服务列表内
     service-url: 
-      defaultZone: http://localhost:8888/eureka/
+      defaultZone: http://localhost:9000/eureka/
        #defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/      
   instance:
     instance-id: item-service
