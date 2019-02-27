@@ -12,7 +12,7 @@ spring:
    application: 
      name: item-dev
    datasource: 
-     url: jdbc:mysql://192.168.43.51:3306/taotao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8             # 数据库名称
+     url: jdbc:mysql://localhost:3306/taotao?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8             # 数据库名称
      username: root
      password: root
      dbcp2:
@@ -20,6 +20,12 @@ spring:
        initial-size: 5                                       # 初始化连接数
        max-total: 5                                          # 最大连接数
        max-wait-millis: 200  
+
+info: 
+  app.name: item-dev
+  company.name: www.xiaomiqiu.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
 
 ---
 
@@ -40,6 +46,12 @@ spring:
        max-total: 5                                          # 最大连接数
        max-wait-millis: 200                                  # 等待连接获取的最大超时时间
 
+info: 
+  app.name: item-prod
+  company.name: www.xiaomiqiu.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
 ---
 
 server:
@@ -58,3 +70,9 @@ spring:
       initial-size: 5                                       # 初始化连接数
       max-total: 5                                          # 最大连接数
       max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+
+info: 
+  app.name: item-test
+  company.name: www.xiaomiqiu.cn
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
