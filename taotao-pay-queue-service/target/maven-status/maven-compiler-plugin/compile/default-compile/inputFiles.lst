@@ -1,0 +1,10 @@
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\listener\InstockItemListener.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\listener\ReshelfItemListener.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\model\OrderAndShippingMessage.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\utils\JsonUtils.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\listener\CreateAccountListener.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\listener\CreateOrderListener.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\proxy\QueueProxy.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\listener\AddItem2EsListener.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\service\impl\QueueProxyServiceImpl.java
+D:\java project\taotao-pay-queue-service\src\main\java\com\taotao\pay\queue\service\QueueProxyService.java

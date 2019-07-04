@@ -1,0 +1,13 @@
+com\taotao\iteminventory\service\queue\RequestQueue$Singleton.class
+com\taotao\iteminventory\service\request\impl\ItemInventoryReadRequestImpl.class
+com\taotao\iteminventory\service\request\Request.class
+com\taotao\iteminventory\service\listener\InitListener.class
+com\taotao\iteminventory\service\queue\Asyc2Queue.class
+com\taotao\iteminventory\service\request\impl\ItemInventoryUpdateRequestImpl.class
+com\taotao\iteminventory\service\impl\ItemInventoryServiceImpl.class
+com\taotao\iteminventory\service\queue\RequestQueue.class
+com\taotao\iteminventory\service\thread\RequestThreadPool.class
+com\taotao\iteminventory\service\impl\ItemInventoryRequestServiceImpl.class
+com\taotao\iteminventory\utils\JsonUtils.class
+com\taotao\iteminventory\service\thread\RequestThread.class
+com\taotao\iteminventory\service\thread\RequestThreadPool$Singleton.class

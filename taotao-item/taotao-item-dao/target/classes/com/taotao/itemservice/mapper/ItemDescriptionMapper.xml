@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.itemservice.mapper.ItemDescriptionMapper">
+	<!-- 根据商品id查询 -->
+	<select id="findItemDescriptionById" parameterType="long" resultType="com.taotao.itemservice.model.ItemDescription">
+		SELECT item_id AS itemId,created,updated,item_desc AS itemDesc FROM tb_item_desc WHERE item_id = #{itemId}
+	</select>
+	
+	<!-- 插入商品信息 -->
+	<insert id="addItemDescription" parameterType="com.taotao.itemservice.model.ItemDescription">
+		INSERT INTO tb_item_desc VALUES(#{itemId},#{created},#{updated},#{itemDesc})
+	</insert>
+	
+	<!-- 删除商品信息 -->
+	<delete id="deleteItemDescription" parameterType="long">
+		DELETE FROM tb_item_desc WHERE item_id = #{id}
+	</delete>
+	
+	<!-- 修改商品信息 -->
+	<update id="updateItemDescription" parameterType="com.taotao.itemservice.model.ItemDescription">
+		UPDATE tb_item_desc SET updated = #{updated},item_desc = #{itemDesc} WHERE item_id = #{itemId}
+	</update>
+	
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+     <context:property-placeholder location="classpath:conf/resource.properties"/>
+     <!-- 扫描controller层 -->
+     <context:component-scan base-package="com.taotao.administration.controller"/>
+     <!-- 配置三大组件 --> 
+     <mvc:annotation-driven/>  
+     
+     <!-- 视图处理器 -->
+     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+     	<property name="prefix" value="/WEB-INF/jsp/"/>
+     	<property name="suffix" value=".jsp"/>
+     </bean>
+     
+     <!-- 定义文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 设定默认编码 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+		<!-- 设定文件上传的最大值5MB，5*1024*1024 -->
+		<property name="maxUploadSize" value="5242880"></property>
+	</bean>
+
+     
+  <!-- 拦截器 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*"/>
+			<bean class="com.taotao.administration.interceptor.AdministristationInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+     
+    <dubbo:application name="taotao-manager-web"/>
+	<dubbo:registry protocol="zookeeper" address="192.168.43.126:2181"/>	
+	<dubbo:reference interface="com.taotao.itemservice.service.ItemCategoryService" id="itemCategoryService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.itemservice.service.ItemInfoService" id="itemInfoService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.pay.account.service.AccountService" id="accountService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.pay.message.service.TransactionMessageService" id="transactionMessageService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.content.service.ContentService" id="contentService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.order.service.OrderService" id="orderService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.user.service.UserService" id="userService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.user.service.FunctionService" id="functionService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.user.service.RoleService" id="roleService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.notice.service.AdviseService" id="adviseService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.notice.service.NoticeService" id="noticeService" timeout="60000" />
+</beans>

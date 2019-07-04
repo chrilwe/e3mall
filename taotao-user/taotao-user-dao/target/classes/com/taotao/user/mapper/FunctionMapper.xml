@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.user.mapper.FunctionMapper">
+	<insert id="add" parameterType="com.taotao.user.model.Function">
+		INSERT INTO
+		tb_function(id,name,code,description,url,zindex,pid,is_menu)
+		VALUES(#{id},#{name},#{code},#{description},#{url},#{zindex},#{pId},#{isMenu})
+	</insert>
+
+	<delete id="delete" parameterType="String">
+		DELETE FROM tb_function WHERE
+		id=#{functionId}
+	</delete>
+
+	<update id="update" parameterType="com.taotao.user.model.Function">
+		UPDATE tb_function SET
+		id=#{id},name=#{name},code=#{code},description=#{description},
+		url=#{url},zindex=#{zindex},pid=#{pId},is_menu=#{isMenu}
+		WHERE id=#{id}
+	</update>
+	
+	<select id="findById" resultType="com.taotao.user.model.Function">
+		SELECT id,name,code,description,url AS page,zindex,pid AS pId,is_menu AS isMenu FROM tb_function WHERE id=#{functionId} AND is_menu=#{isMenu}
+	</select>
+	
+	<select id="queryFunctions" resultType="com.taotao.user.model.Function">
+		SELECT id,name,code,description,url AS page,zindex,pid AS pId,is_menu AS isMenu FROM tb_function LIMIT #{page},#{size}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM tb_function
+	</select>
+	
+	<select id="findFunctionsWhereIsMenu" parameterType="int" resultType="com.taotao.user.model.Function">
+		SELECT id,name,code,description,url AS page,zindex,pid AS pId,is_menu AS isMenu FROM tb_function WHERE is_menu=#{isMenu}
+	</select>
+	
+	<select id="findByUri" parameterType="String" resultType="com.taotao.user.model.Function">
+		SELECT id,name,code,description,url AS page,zindex,pid AS pId,is_menu AS isMenu FROM tb_function WHERE url=#{uri}
+	</select>
+	
+	<select id="findFunctions" resultType="com.taotao.user.model.Function">
+		SELECT id,name,code,description,url AS page,zindex,pid AS pId,is_menu AS isMenu FROM tb_function
+	</select>
+</mapper>

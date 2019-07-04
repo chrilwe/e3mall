@@ -1,0 +1,3 @@
+com\taotao\pay\message\service\impl\TransactionMessageServiceImpl$NotifyMessageCreator.class
+com\taotao\pay\message\service\impl\TransactionMessageServiceImpl.class
+com\taotao\pay\message\exception\MessageExecption.class

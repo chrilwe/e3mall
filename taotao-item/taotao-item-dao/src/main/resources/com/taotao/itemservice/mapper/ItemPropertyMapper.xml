@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.itemservice.mapper.ItemPropertyMapper">
+	<!-- 根据商品id查询 -->
+	<select id="findItemPropertyById" parameterType="long" resultType="com.taotao.itemservice.model.ItemProperty">
+		SELECT id,name,item_id AS itemId,value FROM tb_item_property WHERE id = #{id}
+	</select>
+	
+	<!-- 插入商品信息 -->
+	<insert id="addItemProperty" parameterType="com.taotao.itemservice.model.ItemProperty">
+		INSERT INTO tb_item_property VALUES(#{id},#{name},#{value},#{itemId})
+	</insert>
+	
+	<!-- 删除商品信息 -->
+	<delete id="deleteItemProperty" parameterType="long">
+		DELETE FROM tb_item_property WHERE id = #{id}
+	</delete>
+	
+	<!-- 修改商品信息 -->
+	<update id="updateItemProperty" parameterType="com.taotao.itemservice.model.ItemProperty">
+		UPDATE tb_item_property SET name = #{name},value = #{value},item_id = #{itemId} WHERE id = #{id}
+	</update>
+	
+	<!-- 根据商品id查询  -->
+	<select id="findItemPropertyByItemId" parameterType="long" resultType="com.taotao.itemservice.model.ItemProperty">
+		SELECT id,name,item_id AS itemId,value FROM tb_item_property WHERE item_id = #{itemId}
+	</select>
+	
+</mapper>

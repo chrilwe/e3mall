@@ -1,0 +1,11 @@
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\impl\ItemPriceServiceImpl.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\thread\RequestThread.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\utils\JsonUtils.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\request\impl\ItemPriceUpdateRequestImpl.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\request\impl\ItemPriceReadRequestImpl.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\queue\RequestQueue.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\thread\RequestThreadPool.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\impl\ItemPriceRequestServiceImpl.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\listener\InitListener.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\request\Request.java
+D:\java project\taotao-itemprice\taotao-itemprice-service\src\main\java\com\taotao\item\price\service\queue\AsycRequest2Queue.java

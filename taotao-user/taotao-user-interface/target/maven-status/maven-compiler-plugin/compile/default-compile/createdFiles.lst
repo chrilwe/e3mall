@@ -1,0 +1,3 @@
+com\taotao\user\service\UserService.class
+com\taotao\user\service\RoleService.class
+com\taotao\user\service\FunctionService.class

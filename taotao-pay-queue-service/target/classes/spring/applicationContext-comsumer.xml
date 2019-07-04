@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+	
+	<context:property-placeholder location="classpath:conf/resource.properties"/>
+	<!-- 真正可以产生Connection的ConnectionFactory，由对应的 JMS服务厂商提供 -->
+	<bean id="targetConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+		<property name="brokerURL" value="tcp://192.168.43.126:61616" />
+	</bean>
+	<!-- Spring用于管理真正的ConnectionFactory的ConnectionFactory -->
+	<bean id="connectionFactory"
+		class="org.springframework.jms.connection.SingleConnectionFactory">
+		<!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
+		<property name="targetConnectionFactory" ref="targetConnectionFactory" />
+	</bean>
+	
+	<!-- =======================================创建订单队列================================== -->
+	<bean id="orderDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>${CREATE_ORDER_QUEUE}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="createOrderMessageListener" class="com.taotao.pay.queue.listener.CreateOrderListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="messageListener" ref="createOrderMessageListener" />
+		<property name="destination" ref="orderDestination" />
+	</bean>
+	<!-- =======================================创建订单队列================================== -->
+	
+	<!-- =======================================创建会计队列================================== -->
+	<bean id="accountDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>${CREATE_ACCOUNT_QUEUE}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="createAccountMessageListener" class="com.taotao.pay.queue.listener.CreateAccountListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="messageListener" ref="createAccountMessageListener" />
+		<property name="destination" ref="accountDestination" />
+	</bean>
+	<!-- =======================================创建会计队列================================== -->
+	
+	<!-- =======================================添加商品信息到es队列================================== -->
+	<bean id="addItem2EsDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>${ADDITEMTOESQUEUE}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="addItem2EsListener" class="com.taotao.pay.queue.listener.AddItem2EsListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="messageListener" ref="addItem2EsListener" />
+		<property name="destination" ref="addItem2EsDestination" />
+	</bean>
+	<!-- =======================================添加商品信息到es队列================================== -->
+	
+	<!-- =======================================上架队列================================== -->
+	<bean id="reshelfItemDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>${RESHELFITEMQUEUE}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="reshelfItemListener" class="com.taotao.pay.queue.listener.ReshelfItemListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="messageListener" ref="reshelfItemListener" />
+		<property name="destination" ref="reshelfItemDestination" />
+	</bean>
+	<!-- =======================================上架队列================================== -->
+	
+	
+	<!-- =======================================上架队列================================== -->
+	<bean id="instockItemDestination" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg>
+			<value>${INSTOCKITEMQUEUE}</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="instockItemListener" class="com.taotao.pay.queue.listener.InstockItemListener"/>
+	<bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="messageListener" ref="instockItemListener" />
+		<property name="destination" ref="instockItemDestination" />
+	</bean>
+	<!-- =======================================上架队列================================== -->
+</beans>

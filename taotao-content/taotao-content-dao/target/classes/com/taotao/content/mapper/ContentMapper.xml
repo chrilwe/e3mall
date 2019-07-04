@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.content.mapper.ContentMapper">
+	<!-- 添加记录 -->
+	<insert id="addContent" parameterType="com.taotao.content.model.Content">
+		INSERT INTO tb_content VALUES(#{id},#{categoryId},#{title},#{subTitle},#{titleDesc},
+		#{url},#{pic},#{pic2},#{created},#{updated},#{content})
+	</insert>
+	
+	<!-- 删除记录 -->
+	<delete id="deleteContent" parameterType="long">
+		DELETE FROM tb_content WHERE id=#{id}
+	</delete>
+	
+	<!-- 更新记录 -->
+	<update id="updateContent" parameterType="com.taotao.content.model.Content">
+		UPDATE tb_content SET id=#{id},category_id=#{categoryId},title=#{title},sub_title=#{subTitle},
+		title_desc=#{titleDesc},url=#{url},pic=#{pic},pic2=#{pic2},created=#{created},updated=#{updated},
+		content=#{content} WHERE id=#{id}
+	</update>
+	
+	<!-- 根据id查询 -->
+	<select id="findContentById" parameterType="long" resultType="com.taotao.content.model.Content">
+		SELECT id,category_id AS categoryId,title,sub_title AS subTitle,title_desc AS titleDesc,
+		url,pic,pic2,created,updated,content FROM tb_content WHERE id=#{id}
+	</select>
+	
+	<!-- 分页查询 -->
+	<select id="findContents" resultType="com.taotao.content.model.Content">
+		SELECT id,category_id AS categoryId,title,sub_title AS subTitle,title_desc AS titleDesc,
+		url,pic,pic2,created,updated,content FROM tb_content LIMIT #{from},#{to}
+	</select>
+	
+	<!-- 计算总记录 -->
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM tb_content 
+	</select>
+	
+	<select id="findContentsByCId" parameterType="long" resultType="com.taotao.content.model.Content">
+		SELECT id,category_id AS categoryId,title,sub_title AS subTitle,title_desc AS titleDesc,
+		url,pic,pic2,created,updated,content FROM tb_content WHERE category_id=#{contentCategoryId}
+	</select>
+	
+	<select id="findContentIdByCid" parameterType="long" resultType="long">
+		SELECT id FROM tb_content WHERE category_id=#{contentCategoryId}
+	</select>
+</mapper>

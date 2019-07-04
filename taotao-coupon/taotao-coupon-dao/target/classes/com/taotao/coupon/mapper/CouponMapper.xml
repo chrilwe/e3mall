@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.coupon.mapper.CouponMapper">
+	<insert id="addCoupon" parameterType="com.taotao.coupon.model.Coupon">
+		INSERT INTO
+		tb_coupon(id,title,amount,range_id,begin_time,end_time,allow_type,full_reduction,create_time,status)
+		VALUES(#{id},#{title},#{amount},#{rangeId},#{beginTime},#{endTime},#{allowType},#{fullReduction},#{createTime},#{status})
+	</insert>
+
+	<delete id="deleteCouponById" parameterType="int">
+		DELETE FROM
+		tb_coupon WHERE id=#{id}
+	</delete>
+
+	<update id="updateCoupon" parameterType="com.taotao.coupon.model.Coupon">
+		UPDATE tb_coupon SET
+		title=#{title},amount=#{amount},range_id=#{rangeId},begin_time=#{beginTime},end_time=#{endTime},allow_type=#{allowType},full_reduction=#{fullReduction},create_time=#{createTime},status=#{status}
+		WHERE id=#{id}
+	</update>
+
+	<select id="findCouponsByUserId" resultType="com.taotao.coupon.model.Coupon">
+		SELECT
+		id,title,amount,range_id AS rangeId,begin_time AS beginTime,end_time
+		AS endTime,allow_type AS allowType,full_reduction AS
+		fullReduction,create_time AS createTime,status FROM tb_coupon WHERE
+		status=#{status} AND id in (SELECT coupon_id FROM tb_coupon_user WHERE
+		user_id=#{userId})
+	</select>
+</mapper>

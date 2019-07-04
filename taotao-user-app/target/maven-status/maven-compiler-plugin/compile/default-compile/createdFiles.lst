@@ -1,0 +1,5 @@
+com\taotao\user\app\utils\JsonUtils.class
+com\taotao\user\app\utils\UserAndRole.class
+com\taotao\user\app\controller\UserController.class
+com\taotao\user\app\utils\TaotaoUtils.class
+com\taotao\user\app\utils\CookieUtils.class

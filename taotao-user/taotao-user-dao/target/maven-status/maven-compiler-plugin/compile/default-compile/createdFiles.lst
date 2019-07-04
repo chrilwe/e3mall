@@ -1,0 +1,5 @@
+com\taotao\user\mapper\UserMapper.class
+com\taotao\user\mapper\RoleMapper.class
+com\taotao\user\mapper\UserRoleMapper.class
+com\taotao\user\mapper\FunctionMapper.class
+com\taotao\user\mapper\RoleFunctionMapper.class

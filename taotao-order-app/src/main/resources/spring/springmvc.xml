@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+    
+     <context:property-placeholder location="classpath:conf/resource.properties"/>
+     <!-- 扫描controller层 -->
+     <context:component-scan base-package="com.taotao.order.app.controller"/>
+     <!-- 配置三大组件 --> 
+     <mvc:annotation-driven/>  
+     
+     <!-- 视图处理器 -->
+     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+     	<property name="prefix" value="/WEB-INF/jsp/"/>
+     	<property name="suffix" value=".jsp"/>
+     </bean>
+     
+     <!-- 配置映射资源 -->
+     <mvc:resources location="/css/" mapping="/css/**"/>
+     <mvc:resources location="/js/" mapping="/js/**"/>
+     <mvc:resources location="/images/" mapping="/images/**"/>
+     
+     <mvc:interceptors>
+     	<mvc:interceptor>
+     		<mvc:mapping path="/**"/>
+     		<bean class="com.taotao.order.app.interceptor.OrderInterceptor"></bean>
+     	</mvc:interceptor>
+     </mvc:interceptors>
+     
+    <dubbo:application name="taotao-order-web"/>
+	<dubbo:registry protocol="zookeeper" address="192.168.43.126:2181"/>	
+	<dubbo:reference interface="com.taotao.order.service.OrderService" id="orderService" timeout="60000" />
+	<dubbo:reference interface="com.taotao.user.service.UserService" id="userService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.cart.service.CartService" id="cartService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.iteminventory.service.ItemInventoryRequestService" id="itemInventoryRequestService" timeout="60000" />
+    <dubbo:reference interface="com.taotao.pay.message.service.TransactionMessageService" id="transactionMessageService" timeout="60000" />
+</beans>

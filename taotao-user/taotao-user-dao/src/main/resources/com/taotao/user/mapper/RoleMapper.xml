@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.user.mapper.RoleMapper">
+	<insert id="add" parameterType="com.taotao.user.model.Role">
+		INSERT INTO tb_role(id,name,code,description) VALUES(#{id},#{name},#{code},#{description})
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM tb_role WHERE id=#{roleId}
+	</delete>
+	
+	<update id="update" parameterType="com.taotao.user.model.Role">
+		UPDATE tb_role SET id=#{id},name=#{name},code=#{code},description=#{description} WHERE id=#{id}
+	</update>
+	
+	<select id="findById" parameterType="String" resultType="com.taotao.user.model.Role">
+		SELECT id,name,code,description FROM tb_role WHERE id=#{roleId}
+	</select>
+	
+	<select id="findRoles" resultType="com.taotao.user.model.Role">
+		SELECT id,name,code,description FROM tb_role
+	</select>
+	
+	<select id="queryRoles" resultType="com.taotao.user.model.Role">
+		SELECT id,name,code,description FROM tb_role LIMIT #{page},#{size} 
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM tb_role
+	</select>
+</mapper>

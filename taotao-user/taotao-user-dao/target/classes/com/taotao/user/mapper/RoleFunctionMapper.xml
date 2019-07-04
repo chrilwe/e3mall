@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.user.mapper.RoleFunctionMapper">
+	<insert id="add" parameterType="com.taotao.user.model.RoleFunction">
+		INSERT INTO tb_role_function(role_id,function_id) VALUES(#{roleId},#{functionId})
+	</insert>
+	
+	<delete id="delete" parameterType="String">
+		DELETE FROM tb_role_function WHERE role_id=#{roleId}
+	</delete>
+	
+	<select id="findFunctionIdsByRoleId" parameterType="String" resultType="String">
+		SELECT function_id FROM tb_role_function WHERE role_id=#{roleId}
+	</select>
+	
+	<select id="findRoleIdsByFunctionId" parameterType="String" resultType="String">
+		SELECT function_id FROM tb_role_function WHERE function_id=#{functionId}
+	</select>
+	
+	<insert id="roleFunctions">
+		INSERT INTO tb_role_function(role_id,function_id) VALUES(#{roleId},#{functionId})
+	</insert>
+	
+	<delete id="deleteByFunctionId" parameterType="String">
+		DELETE FROM rb_role_fuunction WHERE function_id=#{functionId}
+	</delete>
+</mapper>

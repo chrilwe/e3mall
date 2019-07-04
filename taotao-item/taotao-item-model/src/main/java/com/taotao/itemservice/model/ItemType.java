@@ -1,0 +1,55 @@
+package com.taotao.itemservice.model;
+
+import java.io.Serializable;
+
+public class ItemType implements Serializable {
+	private int id;
+	private String itemType;
+	private long itemCategoryId;
+	private String field1;
+	private String field2;
+	private String field3;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getItemType() {
+		return itemType;
+	}
+	public void setItemType(String itemType) {
+		this.itemType = itemType;
+	}
+	public long getItemCategoryId() {
+		return itemCategoryId;
+	}
+	public void setItemCategoryId(long itemCategoryId) {
+		this.itemCategoryId = itemCategoryId;
+	}
+	public String getField1() {
+		return field1;
+	}
+	public void setField1(String field1) {
+		this.field1 = field1;
+	}
+	public String getField2() {
+		return field2;
+	}
+	public void setField2(String field2) {
+		this.field2 = field2;
+	}
+	public String getField3() {
+		return field3;
+	}
+	public void setField3(String field3) {
+		this.field3 = field3;
+	}
+	@Override
+	public String toString() {
+		return "ItemType [id=" + id + ", itemType=" + itemType
+				+ ", itemCategoryId=" + itemCategoryId + ", field1=" + field1
+				+ ", field2=" + field2 + ", field3=" + field3 + "]";
+	}
+	
+}

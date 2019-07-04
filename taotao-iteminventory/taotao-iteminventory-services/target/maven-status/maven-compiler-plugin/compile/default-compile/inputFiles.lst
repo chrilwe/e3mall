@@ -1,0 +1,11 @@
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\impl\ItemInventoryRequestServiceImpl.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\request\impl\ItemInventoryUpdateRequestImpl.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\queue\Asyc2Queue.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\thread\RequestThread.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\thread\RequestThreadPool.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\queue\RequestQueue.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\request\impl\ItemInventoryReadRequestImpl.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\request\Request.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\impl\ItemInventoryServiceImpl.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\service\listener\InitListener.java
+D:\java project\taotao-iteminventory\taotao-iteminventory-services\src\main\java\com\taotao\iteminventory\utils\JsonUtils.java

@@ -1,0 +1,5 @@
+com\taotao\notice\dao\impl\NoticeDaoImpl.class
+com\taotao\notice\dao\NoticeDao.class
+com\taotao\notice\dao\impl\AdviseDaoImpl.class
+com\taotao\notice\dao\AdviseDao.class
+com\taotao\notice\dao\utils\JsonUtils.class

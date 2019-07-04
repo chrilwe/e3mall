@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.pay.message.mapper.TransactionMessageMapper">
+	<insert id="insert" parameterType="com.taotao.pay.message.model.TransactionMessage">
+		INSERT INTO rp_transaction_message VALUES(#{messageId},#{version},#{editor},
+		#{creater},#{editTime},#{createTime},#{messageId},#{messageBody},#{messageDataType},#{consumerQueue},
+		#{messageSendTimes},#{areadlyDead},#{status},#{remark},#{field1},#{field2},#{field3})
+	</insert>
+	
+	<delete id="deleteTMByMessageId" parameterType="String">
+		DELETE FROM rp_transaction_message WHERE message_id = #{messageId}
+	</delete>
+	
+	<update id="updateStatusAndEditTime">
+		UPDATE rp_transaction_message SET status = #{status},edit_time = #{editTime} WHERE message_id = #{messageId}
+	</update>
+	
+	<select id="findByMessageId" parameterType="String" resultType="com.taotao.pay.message.model.TransactionMessage">
+		SELECT version,editor,creater,edit_time AS editTime,create_time createTime,message_id AS messageId,
+		message_body messageBody,message_data_type AS messageDataType,consumer_queue AS consumerQueue,
+		message_send_times AS messageSendTimes,areadly_dead AS areadlyDead,status,remark,field1,field2,
+		field3 FROM rp_transaction_message WHERE message_id = #{messageId}
+	</select>
+	
+	<update id="update" parameterType="com.taotao.pay.message.model.TransactionMessage">
+		UPDATE rp_transaction_message SET id=#{messageId},version=#{version},editor=#{editor},
+		creater=#{creater},edit_time=#{editTime},create_time=#{createTime},message_id=#{messageId},message_body=#{messageBody},message_data_type=#{messageDataType},consumer_queue=#{consumerQueue},
+		message_send_times=#{messageSendTimes},areadly_dead=#{areadlyDead},status=#{status},remark=#{remark},field1=#{field1},field2=#{field2},field3=#{field3} WHERE message_id=#{messageId}
+	</update>
+	
+	<update id="updateMessageAlreadyDead" parameterType="String">
+		UPDATE rp_transaction_message SET areadly_dead = #{isAlreadlyDead} WHERE message_id = #{messsageId}
+	</update>
+	
+	<select id="getMessagePageList" resultType="com.taotao.pay.message.model.TransactionMessage">
+		SELECT version,editor,creater,edit_time AS editTime,create_time createTime,message_id AS messageId,
+		message_body messageBody,message_data_type AS messageDataType,consumer_queue AS consumerQueue,
+		message_send_times AS messageSendTimes,areadly_dead AS areadlyDead,status,remark,field1,field2,
+		field3 FROM rp_transaction_message WHERE status=#{status} AND areadly_dead=#{isAreadlyDead} ORDER BY create_time ASC LIMIT #{from},#{to}
+	</select>
+	
+	<select id="queryMessageList" resultType="com.taotao.pay.message.model.TransactionMessage">
+		SELECT version,editor,creater,edit_time AS editTime,create_time createTime,message_id AS messageId,
+		message_body messageBody,message_data_type AS messageDataType,consumer_queue AS consumerQueue,
+		message_send_times AS messageSendTimes,areadly_dead AS areadlyDead,status,remark,field1,field2,
+		field3 FROM rp_transaction_message LIMIT #{page},#{size}
+	</select>
+	
+	<select id="account" resultType="int">
+		SELECT COUNT(*) FROM rp_transaction_message
+	</select>
+	
+	<select id="queryDeadMessageList" resultType="com.taotao.pay.message.model.TransactionMessage">
+		SELECT version,editor,creater,edit_time AS editTime,create_time createTime,message_id AS messageId,
+		message_body messageBody,message_data_type AS messageDataType,consumer_queue AS consumerQueue,
+		message_send_times AS messageSendTimes,areadly_dead AS areadlyDead,status,remark,field1,field2,
+		field3 FROM rp_transaction_message WHERE areadly_dead=#{areadlyDead} LIMIT #{page},#{size} 
+	</select>
+	
+	<select id="countDeadMessage" resultType="int">
+		SELECT COUNT(areadly_dead) FROM rp_transaction_message
+	</select>
+</mapper>

@@ -1,0 +1,4 @@
+com\taotao\order\mapper\OrderItemMapper.class
+com\taotao\order\mapper\OrderRecordMapper.class
+com\taotao\order\mapper\OrderShippingMapper.class
+com\taotao\order\mapper\OrderMapper.class

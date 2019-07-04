@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.point.account.mapper.PointAccountMapper">
+	<!-- 添加记录 -->
+	<insert id="addPointAccount" parameterType="com.taotao.point.account.model.PointAccount">
+		INSERT INTO rp_point_account VALUES(#{id},#{createTime},#{editTime},#{version},#{userNo},#{balance})
+	</insert>
+	
+	<!-- 删除记录 -->
+	<delete id="deletePointAccountById" parameterType="String">
+		DELETE FROM rp_point_account WHERE id=#{id}
+	</delete>
+	
+	<!-- 更新记录 -->
+	<update id="updatePointAccount" parameterType="com.taotao.point.account.model.PointAccount">
+		UPDATE rp_point_account SET id=#{id},create_time=#{createTime},
+		edit_time=#{editTime},version=#{version},user_no=#{userNo},balance=#{balance} WHERE id=#{id}
+	</update>
+	
+	<!-- 更新账户积分余额 -->
+	<update id="updatePointAccountBalanceEditTimeByUserNo">
+		UPDATE rp_point_account SET edit_time=#{editTime},balance=#{balance} WHERE user_no=#{userNo}
+	</update>
+	
+	<!-- 更具id查询记录 -->
+	<select id="findPointAccountById" parameterType="String" resultType="com.taotao.point.account.model.PointAccount">
+		SELECT * FROM rp_point_account WHERE id=#{id}
+	</select>
+	
+	<!-- 根据userNo查询记录 -->
+	<select id="findPointAccountByUserNo" parameterType="String" resultType="com.taotao.point.account.model.PointAccount">
+		SELECT * FROM rp_point_account WHERE user_no=#{userNo}
+	</select>
+</mapper>

@@ -1,0 +1,8 @@
+com\taotao\itemservice\service\impl\ItemInfoServiceImpl.class
+com\taotao\itemservice\service\impl\ItemPropertyServiceImpl.class
+com\taotao\itemservice\service\impl\ItemCategoryServiceImpl.class
+com\taotao\itemservice\service\impl\ItemDescriptionServiceImpl.class
+com\taotao\itemservice\service\activemq\SendChangeDataProducter.class
+com\taotao\itemservice\service\impl\ItemSpecificationServiceImpl.class
+com\taotao\itemservice\service\impl\ItemBrandServiceImpl.class
+com\taotao\itemservice\service\activemq\SendChangeDataProducter$MyMessageCreator.class

@@ -1,0 +1,8 @@
+com\taotao\itemservice\model\ItemPageBean.class
+com\taotao\itemservice\model\ItemCategory.class
+com\taotao\itemservice\model\ItemType.class
+com\taotao\itemservice\model\Item.class
+com\taotao\itemservice\model\ItemDescription.class
+com\taotao\itemservice\model\ItemSpecification.class
+com\taotao\itemservice\model\ItemBrand.class
+com\taotao\itemservice\model\ItemProperty.class

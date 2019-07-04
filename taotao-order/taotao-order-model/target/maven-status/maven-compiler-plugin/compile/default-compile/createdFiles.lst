@@ -1,0 +1,5 @@
+com\taotao\order\model\OrderShipping.class
+com\taotao\order\model\OrderItem.class
+com\taotao\order\model\OrderPageBean.class
+com\taotao\order\model\OrderRecord.class
+com\taotao\order\model\Order.class

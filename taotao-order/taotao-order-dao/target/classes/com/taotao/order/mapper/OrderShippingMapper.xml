@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.order.mapper.OrderShippingMapper">
+	<!-- 添加记录 -->
+	<insert id="addOrderShipping" parameterType="com.taotao.order.model.OrderShipping">
+		INSERT INTO tb_order_shipping VALUES(#{orderId},#{receiverName},#{receiverPhone},#{receiverMobile},#{receiverState},
+		#{receiverCity},#{receiverDistrict},#{receiverAddress},#{receiverZip},#{created},#{updated})
+	</insert>
+	
+	<!-- 根据orderId删除记录 -->
+	<delete id="deleteOrderShippingById" parameterType="String">
+		DELETE FROM tb_order_shipping WHERE order_id=#{orderId}
+	</delete>
+	
+	<!-- 更新记录 -->
+	<update id="updateOrderShipping" parameterType="com.taotao.order.model.OrderShipping">
+		UPDATE tb_order_shipping SET order_id=#{orderId},receiver_name=#{receiverName},receiver_phone=#{receiverPhone},
+		receiver_mobile=#{receiverMobile},receiver_state=#{receiverState},
+		receiver_city=#{receiverCity},receiver_district=#{receiverDistrict},receiver_address=#{receiverAddress},
+		receiver_zip=#{receiverZip},created=#{created},updated=#{updated}
+	</update>
+	
+	<!-- 根据orderId查询 -->
+	<select id="findOrderShippingById" parameterType="String" resultType="com.taotao.order.model.OrderShipping">
+		SELECT order_id AS orderId,receiver_name AS receiverName,receiver_phone AS receiverPhone,
+		receiver_mobile AS receiverMobile,receiver_state AS receiverState,
+		receiver_city AS receiverCity,receiver_district AS receiverDistrict,receiver_address AS receiverAddress,
+		receiver_zip AS receiverZip,created,updated FROM tb_order_shipping WHERE order_id=#{orderId}
+	</select>
+</mapper>

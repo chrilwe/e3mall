@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.pay.account.mapper.AccountRecordMapper">
+	<insert id="addAccountRecord" parameterType="com.taotao.pay.account.model.AccountRecord">
+		INSERT INTO rp_account_history VALUES(#{id},#{createTime},#{editTime},#{version},#{remark},#{accountNo},
+		#{amount},#{banlance},#{fundDirection},#{isAllowSett},#{isCompleteSett},#{requestNo},#{bankTrxNo},
+		#{trxType},#{riskDay},#{userNo},#{status})
+	</insert>
+	
+	<delete id="deleteAccountRecordById" parameterType="String">
+		DELETE FROM rp_account_history WHERE id=#{id}
+	</delete>
+	
+	<update id="updateAccountRecord" parameterType="com.taotao.pay.account.model.AccountRecord">
+		UPDATE rp_account_history SET id=#{id},create_time=#{createTime},edit_time=#{editTime},
+		version=#{version},remark=#{remark},account_no=#{accountNo},amount=#{amount},
+		banlance=#{banlance},fund_direction=#{fundDirection},is_allow_sett=#{isAllowSett},
+		is_complete_sett=#{isCompleteSett},request_no=#{requestNo},bank_trx_no=#{bankTrxNo},
+		trx_type=#{trxType},risk_day=#{riskDay},user_no=#{userNo},status=#{status} WHERE id=#{id}
+	</update>
+	
+	<select id="findAccountRecordByMessageId" parameterType="String" resultType="com.taotao.pay.account.model.AccountRecord">
+		SELECT id,create_time AS createTime,edit_time AS editTime,version,remark,account_no AS accountNo,amount,
+		banlance,fund_direction AS fundDirection,is_allow_sett AS isAllowSett,
+		is_complete_sett AS isCompleteSett,request_no AS requestNo,bank_trx_no AS bankTrxNo,
+		trx_type AS trxType,risk_day AS riskDay,user_no AS userNo,status FROM rp_account_history WHERE bank_trx_no=#{messageId}
+	</select>
+	
+	<select id="queryAccountRecordList" resultType="com.taotao.pay.account.model.AccountRecord">
+		SELECT id,create_time AS createTime,edit_time AS editTime,version,remark,account_no AS accountNo,amount,
+		banlance,fund_direction AS fundDirection,is_allow_sett AS isAllowSett,
+		is_complete_sett AS isCompleteSett,request_no AS requestNo,bank_trx_no AS bankTrxNo,
+		trx_type AS trxType,risk_day AS riskDay,user_no AS userNo,status FROM rp_account_history LIMIT #{page},#{size}
+	</select>
+	
+	<select id="account" resultType="int">
+		SELECT COUNT(*) FROM rp_account_history
+	</select>
+</mapper>

@@ -1,0 +1,3 @@
+com\taotao\dataAsyc\utils\JsonUtils.class
+com\taotao\dataAsyc\activemq\DataChangeMessageReciver.class
+com\taotao\dataAsyc\activemq\DataChangeMessageReciver$MyMessageCreator.class

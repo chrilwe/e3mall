@@ -1,0 +1,6 @@
+com\taotao\itemservice\service\ItemInfoService.class
+com\taotao\itemservice\service\ItemCategoryService.class
+com\taotao\itemservice\service\ItemBrandService.class
+com\taotao\itemservice\service\ItemDescriptionService.class
+com\taotao\itemservice\service\ItemSpecificationService.class
+com\taotao\itemservice\service\ItemPropertyService.class

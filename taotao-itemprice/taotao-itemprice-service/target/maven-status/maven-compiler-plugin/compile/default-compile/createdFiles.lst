@@ -1,0 +1,13 @@
+com\taotao\item\price\service\impl\ItemPriceRequestServiceImpl.class
+com\taotao\item\price\service\queue\RequestQueue$Singleton.class
+com\taotao\item\price\service\request\impl\ItemPriceUpdateRequestImpl.class
+com\taotao\item\price\service\thread\RequestThread.class
+com\taotao\item\price\service\thread\RequestThreadPool.class
+com\taotao\item\price\service\request\Request.class
+com\taotao\item\price\service\utils\JsonUtils.class
+com\taotao\item\price\service\impl\ItemPriceServiceImpl.class
+com\taotao\item\price\service\queue\AsycRequest2Queue.class
+com\taotao\item\price\service\request\impl\ItemPriceReadRequestImpl.class
+com\taotao\item\price\service\queue\RequestQueue.class
+com\taotao\item\price\service\thread\RequestThreadPool$Singleton.class
+com\taotao\item\price\service\listener\InitListener.class

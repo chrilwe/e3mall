@@ -1,0 +1,4 @@
+com\taotao\item\price\mapper\ItemPriceMapper.class
+com\taotao\item\price\dao\RedisDao.class
+com\taotao\item\price\dao\impl\RedisDaoImpl.class
+com\taotao\item\price\utils\JsonUtils.class

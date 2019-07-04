@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.order.mapper.OrderItemMapper">
+	<insert id="addOrderItem" parameterType="com.taotao.order.model.OrderItem">
+		INSERT INTO tb_order_item VALUES(#{itemId},#{itemId},#{orderId},#{num},#{productName},#{price},#{totalFee},#{image})
+	</insert>
+	
+	<delete id="deleteOrderItemById" parameterType="long">
+		DELETE FROM tb_order_item WHERE id=#{itemId}
+	</delete>
+	
+	<update id="updateOrderItem" parameterType="com.taotao.order.model.OrderItem">
+		UPDATE tb_order_item SET id=#{itemId},item_id=#{itemId},order_id=#{orderId},num=#{num},title=#{productName},price=#{price},
+		total_fee=#{totalFee},pic_path=#{image}
+	</update>
+	
+	<select id="findOrderItemByOrderId" parameterType="String" resultType="com.taotao.order.model.OrderItem">
+		SELECT item_id AS itemId,order_id AS orderId,num,title AS productName,price,total_fee AS totalFee,pic_path AS image FROM tb_order_item WHERE order_id=#{orderId}
+	</select>
+</mapper>

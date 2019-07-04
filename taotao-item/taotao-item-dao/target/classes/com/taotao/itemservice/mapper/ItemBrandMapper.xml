@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.itemservice.mapper.ItemBrandMapper">
+	<!-- 根据商品id查询 -->
+	<select id="findItemBrandById" parameterType="long" resultType="com.taotao.itemservice.model.ItemBrand">
+		SELECT id,brand,item_id AS itemId FROM tb_item_brand WHERE id = #{id}
+	</select>
+	
+	<!-- 根据商品id查询 -->
+	<select id="findItemBrandByItemId" parameterType="long" resultType="com.taotao.itemservice.model.ItemBrand">
+		SELECT id,brand,item_id AS itemId FROM tb_item_brand WHERE item_id = #{itemId}
+	</select>
+	
+	<!-- 插入商品信息 -->
+	<insert id="addItemBrand" parameterType="com.taotao.itemservice.model.ItemBrand">
+		INSERT INTO tb_item_brand VALUES(#{id},#{brand},#{itemId})
+	</insert>
+	
+	<!-- 删除商品信息 -->
+	<delete id="deleteItemBrand" parameterType="long">
+		DELETE FROM tb_item_brand WHERE id = #{id}
+	</delete>
+	
+	<!-- 修改商品信息 -->
+	<update id="updateItemBrand" parameterType="com.taotao.itemservice.model.ItemBrand">
+		UPDATE tb_item_brand SET brand = #{brand} WHERE id = #{id}
+	</update>
+	
+</mapper>

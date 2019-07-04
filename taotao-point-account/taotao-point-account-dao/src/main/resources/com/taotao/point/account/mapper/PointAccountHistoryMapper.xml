@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.point.account.mapper.PointAccountHistoryMapper">
+	<!-- 添加记录 -->
+	<insert id="addPointAccountHistory" parameterType="com.taotao.point.account.model.PointAccountHistory">
+		INSERT INTO rp_point_account_history VALUES(#{id},#{createTime},#{editTime},#{version},
+		#{remark},#{amount},#{balance},#{fundDirection},#{requestNo},#{bankTrxNo},#{trxType},#{userNo},#{status})
+	</insert>
+	
+	<!-- 更新记录 -->
+	<update id="updatePointAccountHistory" parameterType="com.taotao.point.account.model.PointAccountHistory">
+		UPDATE rp_point_account_history SET id=#{id},create_time=#{createTime},edit_time=#{editTime},version=#{version},
+		remark=#{remark},amount=#{amount},balance=#{balance},fund_direction=#{fundDirection},
+		request_no=#{requestNo},bank_trx_no=#{bankTrxNo},trx_type=#{trxType},user_no=#{userNo},status=#{status}
+	</update>
+	
+	<!-- 更具requestNO更新记录 -->
+	<update id="updatePointAccountHistoryStatusEditTimeByRequestNo">
+		UPDATE rp_point_account_history SET status=#{status},edit_time=#{editTime} WHERE request_no=#{requestNo}
+	</update>
+	
+	<!-- 删除记录 -->
+	<delete id="deletePointAccountHistory" parameterType="String">
+		DELETE FROM rp_point_account_history WHERE id=#{id}
+	</delete>
+	
+	<!-- 根据id查询记录 -->
+	<select id="findPointAccountHistoryById" parameterType="String" resultType="com.taotao.point.account.model.PointAccountHistory">
+		SELECT * FROM rp_point_account_history WHERE id=#{id}
+	</select>
+	
+	<!-- 根据requestNo查询记录 -->
+	<select id="findPointAccountHistoryByRequestNo" parameterType="String" resultType="com.taotao.point.account.model.PointAccountHistory">
+		SELECT * FROM rp_point_account_history WHERE request_no=#{requestNo}
+	</select>
+	
+	<select id="queryByUserId" resultType="com.taotao.point.account.model.PointAccountHistory">
+		SELECT id,create_time AS createTime,edit_time AS editTime,version,remark,amount,balance,fund_direction AS aundDirection,status FROM rp_point_account_history WHERE user_no=#{userId} LIMIT #{page},#{size}
+	</select>
+	
+	<select id="countPointHistory" parameterType="String" resultType="int">
+		SELECT COUNT(user_no) FROM  rp_point_account_history WHERE user_no=#{userId}
+	</select>
+</mapper>

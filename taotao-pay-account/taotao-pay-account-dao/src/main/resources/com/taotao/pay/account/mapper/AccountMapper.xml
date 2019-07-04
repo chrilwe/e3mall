@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.pay.account.mapper.AccountMapper">
+	<insert id="addAccount" parameterType="com.taotao.pay.account.model.Account">
+		INSERT INTO rp_account VALUES(#{id},#{createTime},#{editTime},#{version},#{remark},#{accountNo},#{banlance},#{unbanlance},
+		#{securityMoney},#{status},#{totalIncome},#{totalExpend},#{todayIncome},#{todayExpend},#{accountType},
+		#{settAmount},#{userNo})
+	</insert>
+	
+	<delete id="deleteAccountById" parameterType="String">
+		DELETE FROM rp_account WHERE id=#{id}
+	</delete>
+	
+	<update id="updateAccount" parameterType="com.taotao.pay.account.model.Account">
+		UPDATE rp_account SET id=#{id},create_time=#{createTime},edit_time=#{editTime},version=#{version},
+		remark=#{remark},account_no=#{accountNo},banlance=#{banlance},unbanlance=#{unbanlance},
+		security_money=#{securityMoney},status=#{status},total_income=#{totalIncome},total_expend=#{totalExpend},
+		today_income=#{todayIncome},today_expend=#{todayExpend},account_type=#{accountType},
+		sett_amount=#{settAmount},user_no=#{userNo} WHERE id=#{id}
+	</update>
+	
+	<select id="findAccountByUserNo" parameterType="String" resultType="com.taotao.pay.account.model.Account">
+		SELECT id,create_time AS createTime,edit_time AS editTime,version,remark,account_no AS accountNo,banlance,
+		unbanlance,security_money AS securityMoney,status,total_income AS totalIncome,total_expend AS totalExpend,
+		today_income AS todayIncome,today_expend AS todayExpend,account_type AS accountType,sett_amount AS settAmount,
+		user_no AS userNo FROM rp_account WHERE user_no=#{userNo}
+	</select>
+	
+	<select id="queryAccountList" resultType="com.taotao.pay.account.model.Account">
+		SELECT id,create_time AS createTime,edit_time AS editTime,version,remark,account_no AS accountNo,banlance,
+		unbanlance,security_money AS securityMoney,status,total_income AS totalIncome,total_expend AS totalExpend,
+		today_income AS todayIncome,today_expend AS todayExpend,account_type AS accountType,sett_amount AS settAmount,
+		user_no AS userNo FROM rp_account LIMIT #{page},#{size}
+	</select>
+	
+	<select id="account" resultType="int">
+		SELECT COUNT(*) FROM rp_account
+	</select>
+</mapper>

@@ -1,0 +1,10 @@
+com\taotao\pay\queue\listener\CreateOrderListener.class
+com\taotao\pay\queue\listener\AddItem2EsListener.class
+com\taotao\pay\queue\listener\ReshelfItemListener.class
+com\taotao\pay\queue\service\QueueProxyService.class
+com\taotao\pay\queue\model\OrderAndShippingMessage.class
+com\taotao\pay\queue\proxy\QueueProxy.class
+com\taotao\pay\queue\service\impl\QueueProxyServiceImpl.class
+com\taotao\pay\queue\listener\CreateAccountListener.class
+com\taotao\pay\queue\listener\InstockItemListener.class
+com\taotao\pay\queue\utils\JsonUtils.class

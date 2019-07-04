@@ -1,0 +1,3 @@
+com\taotao\es\search\dao\BuildTransportClient.class
+com\taotao\es\search\dao\EsSearchDao.class
+com\taotao\es\search\dao\impl\EsSearchDaoImpl.class

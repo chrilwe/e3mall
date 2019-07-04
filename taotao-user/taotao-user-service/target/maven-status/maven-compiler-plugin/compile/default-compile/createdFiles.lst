@@ -1,0 +1,4 @@
+com\taotao\user\service\impl\UserServiceImpl.class
+com\taotao\user\service\impl\FunctionServiceImpl.class
+com\taotao\user\service\impl\RoleServiceImpl.class
+com\taotao\user\service\utils\JsonUtils.class

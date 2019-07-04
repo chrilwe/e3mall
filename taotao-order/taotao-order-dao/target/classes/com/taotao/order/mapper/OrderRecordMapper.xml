@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.order.mapper.OrderRecordMapper">
+	<insert id="addOrderRecord" parameterType="com.taotao.order.model.OrderRecord">
+		INSERT INTO rp_trade_payment_record VALUES(#{id},#{version},#{createTime},#{status},#{editor},#{creater},
+		#{editTime},#{productName},#{merchantOrderNo},#{trxNo},
+		#{bankOrderNo},#{bankTrxNo},#{merchantName},#{merchantNo},#{payerUserNo},#{payerName},
+		#{payerPayAmount},#{payerFee},
+		#{payerAccountType},#{receiverUserNo},#{receiverName},#{receiverPayAmount},
+		#{receiverFee},#{receiverAccountType},
+		#{orderIp},#{orderRefererUrl},#{orderAmount},#{platIncome},#{feeRate},#{platCost},
+		#{platProfit},#{returnUrl},#{notifyUrl},
+		#{payWayCode},#{payWayName},#{paySuccessTime},#{completeTime},#{isRefund},#{refundTimes},
+		#{successRefundAmount},#{trxType},
+		#{orderFrom},#{payTypeCode},#{payTypeName},#{fundIntoType},#{remark},
+		#{field1},#{field2},#{field3},#{field4},#{field5},#{bankReturnMsg})
+	</insert>
+	
+	<delete id="deleteOrderRecord">
+		UPDATE rp_trade_payment_record SET status=#{status} WHERE id=#{id}
+	</delete>
+	
+	<update id="updateOrderBankOrderNo">
+		UPDATE rp_trade_payment_record SET bank_order_no=#{bankOrderNo} WHERE merchant_order_no=#{orderId}
+	</update>
+	
+	<update id="updateRefundMessage">
+		UPDATE rp_trade_payment_order SET status=#{status},edit_time=#{editTime},is_refund=#{isRefund},success_refund_amount=#{refundAmount},refund_times=#{refundTimes} WHERE merchant_order_no=#{orderId} 
+	</update>
+	
+	<update id="updateOrderRecord" parameterType="com.taotao.order.model.OrderRecord">
+		UPDATE rp_trade_payment_record SET id=#{id},version=#{version},create_time=#{createTime},
+		status=#{status},editor=#{editor},creater=#{creater},edit_time=#{editTime},
+		product_name=#{productName},merchant_order_no=#{merchantOrderNo},trx_no=#{trxNo},
+		bank_order_no=#{bankOrderNo},bank_trx_no=#{bankTrxNo},merchant_name=#{merchantName},
+		merchant_no=#{merchantNo},payer_user_no=#{payerUserNo},
+		payer_name=#{payerName},payer_pay_amount=#{payerPayAmount},payer_fee=#{payerFee},
+		payer_account_type=#{payerAccountType},receiver_user_no=#{receiverUserNo},
+		receiver_name=#{receiverName},receiver_pay_amount=#{receiverPayAmount},
+		receiver_fee=#{receiverFee},receiver_account_type=#{receiverAccountType},
+		order_ip=#{orderIp},order_referer_url=#{orderRefererUrl},order_amount=#{orderAmount},
+		plat_income=#{platIncome},fee_rate=#{feeRate},
+		plat_cost=#{platCost},plat_profit=#{platProfit},return_url=#{returnUrl},notify_url=#{notifyUrl},
+		pay_way_code=#{payWayCode},pay_way_name=#{payWayName},pay_success_time=#{paySuccessTime},
+		complete_time=#{completeTime},
+		is_refund=#{isRefund},refund_times=#{refundTimes},success_refund_amount=#{successRefundAmount},
+		trx_type=#{trxType},order_from=#{orderFrom},pay_type_code=#{payTypeCode},pay_type_name=#{payTypeName},
+		fund_into_type=#{fundIntoType},
+		remark=#{remark},field1=#{field1},field2=#{field2},field3=#{field3},field4=#{field4},
+		field5=#{field5},bank_return_msg=#{bankReturnMsg} WHERE id=#{id}
+	</update>
+	
+	<update id="updateOrderRecord_">
+		UPDATE rp_trade_payment_record SET pay_success_time=#{paySuccessTime},bank_trx_no=#{bankTrxNo},
+		bank_return_msg=#{bankReturnMsg},status=#{status} WHERE bank_order_no=#{bankOrderNo}
+	</update>
+	
+	<select id="findOrderRecordById" parameterType="String" resultType="com.taotao.order.model.OrderRecord">
+		SELECT id,version,create_time AS createTime,
+		status,editor,creater,edit_time AS {editTime},
+		product_name AS productName,merchant_order_no AS merchantOrderNo,trx_no AS trxNo,
+		bank_order_no AS bankOrderNo,bank_trx_no AS bankTrxNo,merchant_name AS merchantName,
+		merchant_no AS merchantNo,payer_user_no AS payerUserNo,
+		payer_name AS payerName,payer_pay_amount AS payerPayAmount,payer_fee AS payerFee,
+		payer_account_type AS payerAccountType,receiver_user_no AS receiverUserNo,
+		receiver_name AS receiverName,receiver_pay_amount AS receiverPayAmount,
+		receiver_fee AS receiverFee,receiver_account_type AS receiverAccountType,
+		order_ip AS orderIp,order_referer_url AS orderRefererUrl,order_amount AS orderAmount,
+		plat_income AS platIncome,fee_rate AS feeRate,
+		plat_cost AS platCost,plat_profit AS platProfit,return_url AS returnUrl,notify_url AS notifyUrl,
+		pay_way_code AS payWayCode,pay_way_name AS payWayName,pay_success_time AS paySuccessTime,
+		complete_time AS completeTime,
+		is_refund AS isRefund,refund_times AS refundTimes,success_refund_amount AS successRefundAmount,
+		trx_type AS trxType},order_from AS orderFrom,pay_type_code AS payTypeCode,pay_type_name AS payTypeName,
+		fund_into_type AS fundIntoType,
+		remark,field1,field2,field3,field4,
+		field5,bank_return_msg FROM rp_trade_payment_record WHERE id=#{id}
+	</select>
+	
+	<select id="findOrderRecordByBankOrderNo" resultType="com.taotao.order.model.OrderRecord">
+		SELECT id,version,create_time AS createTime,
+		status,editor,creater,edit_time AS {editTime},
+		product_name AS productName,merchant_order_no AS merchantOrderNo,trx_no AS trxNo,
+		bank_order_no AS bankOrderNo,bank_trx_no AS bankTrxNo,merchant_name AS merchantName,
+		merchant_no AS merchantNo,payer_user_no AS payerUserNo,
+		payer_name AS payerName,payer_pay_amount AS payerPayAmount,payer_fee AS payerFee,
+		payer_account_type AS payerAccountType,receiver_user_no AS receiverUserNo,
+		receiver_name AS receiverName,receiver_pay_amount AS receiverPayAmount,
+		receiver_fee AS receiverFee,receiver_account_type AS receiverAccountType,
+		order_ip AS orderIp,order_referer_url AS orderRefererUrl,order_amount AS orderAmount,
+		plat_income AS platIncome,fee_rate AS feeRate,
+		plat_cost AS platCost,plat_profit AS platProfit,return_url AS returnUrl,notify_url AS notifyUrl,
+		pay_way_code AS payWayCode,pay_way_name AS payWayName,pay_success_time AS paySuccessTime,
+		complete_time AS completeTime,
+		is_refund AS isRefund,refund_times AS refundTimes,success_refund_amount AS successRefundAmount,
+		trx_type AS trxType},order_from AS orderFrom,pay_type_code AS payTypeCode,pay_type_name AS payTypeName,
+		fund_into_type AS fundIntoType,
+		remark,field1,field2,field3,field4,
+		field5,bank_return_msg FROM rp_trade_payment_record WHERE bank_order_no=#{bankOrderNo}
+	</select>
+	
+	<select id="findOrderRecordByTrxNo" parameterType="String" resultType="com.taotao.order.model.OrderRecord">
+		SELECT id,version,create_time AS createTime,
+		status,editor,creater,edit_time AS editTime,
+		product_name AS productName,merchant_order_no AS merchantOrderNo,trx_no AS trxNo,
+		bank_order_no AS bankOrderNo,bank_trx_no AS bankTrxNo,merchant_name AS merchantName,
+		merchant_no AS merchantNo,payer_user_no AS payerUserNo,
+		payer_name AS payerName,payer_pay_amount AS payerPayAmount,payer_fee AS payerFee,
+		payer_account_type AS payerAccountType,receiver_user_no AS receiverUserNo,
+		receiver_name AS receiverName,receiver_pay_amount AS receiverPayAmount,
+		receiver_fee AS receiverFee,receiver_account_type AS receiverAccountType,
+		order_ip AS orderIp,order_referer_url AS orderRefererUrl,order_amount AS orderAmount,
+		plat_income AS platIncome,fee_rate AS feeRate,
+		plat_cost AS platCost,plat_profit AS platProfit,return_url AS returnUrl,notify_url AS notifyUrl,
+		pay_way_code AS payWayCode,pay_way_name AS payWayName,pay_success_time AS paySuccessTime,
+		complete_time AS completeTime,
+		is_refund AS isRefund,refund_times AS refundTimes,success_refund_amount AS successRefundAmount,
+		trx_type AS trxType},order_from AS orderFrom,pay_type_code AS payTypeCode,pay_type_name AS payTypeName,
+		fund_into_type AS fundIntoType,
+		remark,field1,field2,field3,field4,
+		field5,bank_return_msg FROM rp_trade_payment_record WHERE trx_no=#{messageId}
+	</select>
+	
+	<select id="findOrderRecordsByPageAndSize" resultType="com.taotao.order.model.OrderRecord">
+		SELECT id,version,create_time AS createTime,
+		status,editor,creater,edit_time AS editTime,
+		product_name AS productName,merchant_order_no AS merchantOrderNo,trx_no AS trxNo,
+		bank_order_no AS bankOrderNo,bank_trx_no AS bankTrxNo,merchant_name AS merchantName,
+		merchant_no AS merchantNo,payer_user_no AS payerUserNo,
+		payer_name AS payerName,payer_pay_amount AS payerPayAmount,payer_fee AS payerFee,
+		payer_account_type AS payerAccountType,receiver_user_no AS receiverUserNo,
+		receiver_name AS receiverName,receiver_pay_amount AS receiverPayAmount,
+		receiver_fee AS receiverFee,receiver_account_type AS receiverAccountType,
+		order_ip AS orderIp,order_referer_url AS orderRefererUrl,order_amount AS orderAmount,
+		plat_income AS platIncome,fee_rate AS feeRate,
+		plat_cost AS platCost,plat_profit AS platProfit,return_url AS returnUrl,notify_url AS notifyUrl,
+		pay_way_code AS payWayCode,pay_way_name AS payWayName,pay_success_time AS paySuccessTime,
+		complete_time AS completeTime,
+		is_refund AS isRefund,refund_times AS refundTimes,success_refund_amount AS successRefundAmount,
+		trx_type AS trxType},order_from AS orderFrom,pay_type_code AS payTypeCode,pay_type_name AS payTypeName,
+		fund_into_type AS fundIntoType,
+		remark,field1,field2,field3,field4,
+		field5,bank_return_msg FROM rp_trade_payment_record LIMIT #{page},#{size}
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM rp_trade_payment_record
+	</select>
+	
+	<update id="updateOrderRecordStatus">
+		UPDATE rp_trade_payment_record SET status=#{status},edit_time=#{editTime} WHERE id=#{orderId}
+	</update>
+</mapper>

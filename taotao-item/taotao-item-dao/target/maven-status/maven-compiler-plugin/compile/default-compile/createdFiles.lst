@@ -1,0 +1,7 @@
+com\taotao\itemservice\mapper\ItemSpecificationMapper.class
+com\taotao\itemservice\mapper\ItemInfoMapper.class
+com\taotao\itemservice\mapper\ItemDescriptionMapper.class
+com\taotao\itemservice\mapper\ItemPropertyMapper.class
+com\taotao\itemservice\mapper\ItemBrandMapper.class
+com\taotao\itemservice\mapper\ItemTypeMapper.class
+com\taotao\itemservice\mapper\ItemCategoryMapper.class

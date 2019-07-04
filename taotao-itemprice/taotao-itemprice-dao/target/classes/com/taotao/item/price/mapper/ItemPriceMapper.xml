@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taotao.item.price.mapper.ItemPriceMapper">
+	<!-- 添加记录 -->
+	<insert id="addItemPrice" parameterType="com.taotao.item.price.model.ItemPrice">
+		INSERT INTO tb_item_price VALUES(#{id},#{price},#{itemId})
+	</insert>
+	
+	<!-- 删除记录 -->
+	<delete id="deleteItemPriceByItemId" parameterType="long">
+		DELETE FROM tb_item_price WHERE item_id=#{itemId}
+	</delete>
+	
+	<!-- 更新记录 -->
+	<update id="updateItemPrice" parameterType="long">
+		UPDATE tb_item_price SET price=#{price},item_id=#{itemId} WHERE item_id=#{itemId}
+	</update>
+	
+	<update id="updateItemPriceByItemId">
+		UPDATE tb_item_price SET price=#{price} WHERE item_id=#{itemId}
+	</update>
+	
+	<!-- 查询记录 -->
+	<select id="findItemPriceByItemId" parameterType="long" resultType="com.taotao.item.price.model.ItemPrice">
+		SELECT id,price,item_id AS itemId FROM tb_item_price WHERE item_id=#{itemId}
+	</select>
+</mapper>

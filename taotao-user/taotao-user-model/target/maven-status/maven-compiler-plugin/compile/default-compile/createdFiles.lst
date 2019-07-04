@@ -1,0 +1,6 @@
+com\taotao\user\model\UserRole.class
+com\taotao\user\model\Function.class
+com\taotao\user\model\UserPageBean.class
+com\taotao\user\model\RoleFunction.class
+com\taotao\user\model\User.class
+com\taotao\user\model\Role.class
